@@ -36,15 +36,13 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/logo.png', sizes: '32x32' }
+      { url: '/favicon.ico' },
+      { url: '/logo.png', sizes: '32x32', type: 'image/png' }
     ],
-    shortcut: '/logo.png',
-    apple: '/logo.png',
-    other: {
-      rel: 'apple-touch-icon',
-      url: '/logo.png',
-    },
+    shortcut: ['/favicon.ico'],
+    apple: [
+      { url: '/logo.png', sizes: '180x180', type: 'image/png' }
+    ]
   },
   openGraph: {
     title: 'OnurApps | Web ve mobil uygulama hizmetleri',
@@ -85,12 +83,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr" className="scroll-smooth">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-      </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col bg-[#080c14] text-white font-sans`}
       >
