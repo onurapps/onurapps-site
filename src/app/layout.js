@@ -1,6 +1,5 @@
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
-import Header from '../components/Header';
 
 // Inter font for body text
 const inter = Inter({
@@ -87,7 +86,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col bg-[#080c14] text-white font-sans`}
       >
-        <Header />
         {children}
 
         {/* Global background decorations */}

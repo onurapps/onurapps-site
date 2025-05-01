@@ -30,24 +30,71 @@ const Projects = () => {
     };
   }, []);
 
+  // Popup'ı açık/kapalı durumunu yönetmek için
+  const toggleProjectDetails = (projectId) => {
+    if (activeProject === projectId) {
+      setActiveProject(null); // Eğer zaten açıksa kapat
+    } else {
+      setActiveProject(projectId); // Değilse aç
+    }
+  };
+
+  // ESC tuşuyla popup'ı kapatmak için
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        setActiveProject(null);
+      }
+    };
+    
+    window.addEventListener('keydown', handleEsc);
+    
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  // Overlay tıklamalarını ele almak için
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains('overlay')) {
+      setActiveProject(null);
+    }
+  };
+
   // Proje verileri
   const projects = [
     {
       id: 1,
       title: 'Kronos',
       description: 'Tarihi olayları kronolojik sıraya koyma mobil oyunu.',
+      longDescription: 'Kronos, kullanıcıların tarihi olayları doğru kronolojik sıraya koyarak tarih bilgilerini test edebildiği interaktif bir mobil uygulamadır. Farklı zorluk seviyelerine ve kategorilere sahip, eğlenceli bir öğrenme deneyimi sunar.',
+      features: [
+        'Binlerce tarihi olay',
+        'Zorluk seviyeleri',
+        'Kategorilere ayrılmış içerik',
+        'Gerçek zamanlı skor tablosu',
+        'Öğrenme modu'
+      ],
       tags: ['Flutter', 'Dart', 'Supabase', 'GetX'],
       image: '/projects/kronos.png',
-      demoUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.kronos',
+      storeUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.kronos',
       detailUrl: '/projects/kronos'
     },
     {
       id: 2,
       title: 'NefesAl',
       description: 'Sigarayı bırakmaya yardımcı mobil uygulama.',
+      longDescription: 'NefesAl, sigara bırakma sürecinde kullanıcıları destekleyen, motivasyon ve takip özellikleri sunan kapsamlı bir mobil uygulamadır. Sağlık iyileşmelerini, tasarruf edilen parayı ve sigarasız geçen süreyi takip etmenizi sağlar.',
+      features: [
+        'Sağlık iyileşme takibi',
+        'Tasarruf hesaplayıcı',
+        'Sigara içme isteği yönetimi',
+        'Günlük motivasyon',
+        'Topluluk desteği'
+      ],
       tags: ['Flutter', 'Dart', 'Firebase', 'Provider'],
       image: '/projects/nefesal.png',
-      demoUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.nefesai',
+      storeUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.nefesai',
       detailUrl: '/projects/nefesal'
     }
   ];
@@ -127,24 +174,21 @@ const Projects = () => {
                       
                       <div className="flex gap-3 mt-4 sm:mt-6">
                         <Link
-                          href={project.demoUrl}
+                          href={project.storeUrl}
                           target="_blank"
                           className="relative overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium flex-1 text-center group-hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300"
                         >
-                          <span className="relative z-10 flex items-center justify-center">
-                            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M3.609 1.814L13.792 12 3.609 22.186c-.181.181-.29.433-.29.7 0 .267.109.519.29.7.181.181.433.29.7.29.267 0 .519-.109.7-.29L15.567 12 5.009 1.424c-.181-.181-.434-.29-.7-.29-.267 0-.519.109-.7.29-.181.181-.29.434-.29.7 0 .267.109.519.29.7z"/>
-                            </svg>
-                            Görüntüle
-                          </span>
+                          <span className="relative z-10">İndir</span>
                           <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                         </Link>
-                        <Link
-                          href={project.detailUrl}
-                          className="relative px-4 py-2 rounded-lg border border-[#1ae885]/30 text-[#1ae885] flex items-center justify-center group-hover:border-[#1ae885]/60 transition-all duration-300"
+                        <button
+                          onClick={() => toggleProjectDetails(project.id)}
+                          className="relative px-4 py-2 rounded-lg border border-[#1ae885]/30 text-[#1ae885] flex items-center justify-center group-hover:border-[#1ae885]/60 transition-all duration-300 hover:bg-[#1ae885]/10"
                         >
-                          <span className="relative z-10">Detaylar</span>
-                        </Link>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
                     
@@ -161,6 +205,85 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+        {/* Proje Detayları Pop-up */}
+        {activeProject && (
+          <div 
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overlay backdrop-blur-sm"
+            onClick={handleOverlayClick}
+          >
+            <div 
+              className="relative bg-gradient-to-bl from-[#162435] via-[#0c1520] to-[#0a0f18] rounded-xl border border-[#1ae885]/20 p-1 w-full max-w-2xl max-h-[90vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Arka Plan Işıma */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1ae885]/5 to-[#0ea5e9]/5 opacity-30 blur-xl rounded-xl"></div>
+              
+              {/* İçerik Konteyneri */}
+              <div className="relative bg-[#0c1520]/90 rounded-xl p-8 h-full overflow-auto z-10 max-h-[90vh]">
+                {/* Kapat Butonu */}
+                <button 
+                  onClick={() => setActiveProject(null)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                
+                {/* Proje Başlığı */}
+                <h2 className="text-3xl font-bold text-white mb-2 pr-8">
+                  {projects.find(p => p.id === activeProject)?.title}
+                </h2>
+                
+                <div className="h-1 w-20 bg-gradient-to-r from-[#1ae885] to-transparent rounded-full my-4"></div>
+                
+                {/* Uzun Açıklama */}
+                <p className="text-gray-300 mb-6">
+                  {projects.find(p => p.id === activeProject)?.longDescription}
+                </p>
+                
+                {/* Özellikler */}
+                <h3 className="text-xl font-semibold text-white mb-3">Özellikler</h3>
+                <ul className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {projects.find(p => p.id === activeProject)?.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-[#1ae885] mt-1">✓</span>
+                      <span className="text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                {/* Kullanılan Teknolojiler */}
+                <h3 className="text-xl font-semibold text-white mb-3">Teknolojiler</h3>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {projects.find(p => p.id === activeProject)?.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="text-sm px-3 py-1 rounded-full text-[#1ae885] border border-[#1ae885]/30 bg-[#1ae885]/5"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                {/* İndirme Butonu */}
+                <div className="flex justify-center pt-2">
+                  <Link
+                    href={projects.find(p => p.id === activeProject)?.storeUrl || '#'}
+                    target="_blank"
+                    className="relative overflow-hidden px-6 py-3 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium text-center hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300 flex items-center gap-2"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/>
+                    </svg>
+                    <span className="relative z-10">Google Play'den İndir</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Daha Fazla Proje Butonu */}
         <div className="flex justify-center mt-8 sm:mt-16">

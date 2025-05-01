@@ -54,7 +54,7 @@ const Hero = () => {
     return () => {
       clearTimeout(typingTimer);
     };
-  }, [currentTextIndex, texts]);
+  }, [currentTextIndex]);
 
   // Fade-in animasyonu için
   useEffect(() => {
