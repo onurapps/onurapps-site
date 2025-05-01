@@ -118,94 +118,83 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Projeler Grid - Yeni 3D Kart Tasarımı */}
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16 transition-all duration-1000 ease-out transform ${
+        {/* Projeler Grid - Yeni Tasarım */}
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 transition-all duration-1000 ease-out transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           {projects.map((project) => (
             <div 
               key={project.id}
-              className="perspective-1000 relative h-[500px] sm:h-[500px] md:h-[480px] lg:h-[450px] group mb-10 sm:mb-8 md:mb-6 lg:mb-0"
+              className="relative bg-gradient-to-bl from-[#162435]/80 via-[#0c1520]/90 to-[#0a0f18]/80 rounded-xl border border-[#1ae885]/20 overflow-hidden group hover:shadow-[0_0_25px_rgba(26,232,133,0.2)] transition-all duration-500"
             >
-              {/* 3D Kart */}
-              <div className="relative w-full h-full transform-style-3d rotate-y-0 group-hover:rotate-y-12 transition-transform duration-700">
-                {/* Kart Ön Yüzü */}
-                <div className="absolute inset-0 backface-hidden w-full h-full">
-                  {/* Arka Plan Işımalar */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] opacity-20 blur-xl rounded-xl transform scale-95 group-hover:scale-105 transition-all duration-500"></div>
-                  
-                  {/* Ana Kart */}
-                  <div className="relative bg-gradient-to-bl from-[#162435] via-[#0c1520] to-[#0a0f18] shadow-[0_0_40px_rgba(26,232,133,0.15)] rounded-xl border border-[#1ae885]/10 p-0.5 h-full w-full overflow-hidden z-10">
-                    {/* Görsel Bölümü */}
-                    <div className="relative h-[50%] md:h-[55%] overflow-hidden rounded-t-xl">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover object-top transform group-hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0c1520] to-transparent opacity-60"></div>
-                      
-                      {/* Flare Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-[#1ae885]/0 via-[#1ae885]/5 to-[#0ea5e9]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    </div>
-                    
-                    {/* İçerik Bölümü */}
-                    <div className="p-6 h-[50%] md:h-[45%] flex flex-col justify-between relative">
-                      {/* Arka Plan Parıltılar */}
-                      <div className="absolute w-20 h-20 rounded-full bg-[#1ae885]/5 -top-10 -right-10 blur-xl"></div>
-                      <div className="absolute w-20 h-20 rounded-full bg-[#0ea5e9]/5 bottom-5 -left-10 blur-xl"></div>
-                      
-                      <div>
-                        <h3 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-[#1ae885] transition-colors duration-300">{project.title}</h3>
-                        <p className="text-gray-400 mb-4">{project.description}</p>
-                        
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag, index) => (
-                            <span
-                              key={index}
-                              className="text-xs px-2.5 py-1 rounded-full text-[#1ae885] border border-[#1ae885]/20 bg-[#1ae885]/5"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-3 mt-4 sm:mt-6">
-                        <Link
-                          href={project.storeUrl}
-                          target="_blank"
-                          className="relative overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium flex-1 text-center group-hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300"
-                        >
-                          <span className="relative z-10">İndir</span>
-                          <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                        </Link>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleProjectDetails(project.id);
-                          }}
-                          className="relative px-4 py-2 rounded-lg border border-[#1ae885]/30 text-[#1ae885] flex items-center justify-center group-hover:border-[#1ae885]/60 transition-all duration-300 hover:bg-[#1ae885]/10"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                    
-                    {/* Işık Refleks Efekti */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#1ae885]/5 to-transparent transform translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1500"></div>
-                    </div>
-                  </div>
+              {/* Görsel Alanı */}
+              <div className="relative h-48 md:h-56 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1520] to-transparent opacity-80"></div>
+                
+                {/* Etiketler */}
+                <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-2">
+                  {project.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="text-xs px-2.5 py-1 rounded-full text-[#1ae885] border border-[#1ae885]/30 bg-[#0c1520]/80 backdrop-blur-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
               
-              {/* Gölge Efekti */}
-              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] h-[10px] bg-[#1ae885]/20 blur-xl rounded-full opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
+              {/* İçerik Alanı */}
+              <div className="p-5">
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#1ae885] transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 mb-4 min-h-[3em]">{project.description}</p>
+                
+                {/* Buttonlar */}
+                <div className="flex gap-3 mt-4">
+                  <Link
+                    href={project.storeUrl}
+                    target="_blank"
+                    className="relative overflow-hidden px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium flex-1 text-center hover:shadow-[0_0_15px_rgba(26,232,133,0.4)] transition-all duration-300 flex items-center justify-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19.5L14.8,4.2V10M13.5,2V10A1,1 0 0,0 14.5,11H22V20A2,2 0 0,1 20,22H13.5V2Z"/>
+                    </svg>
+                    <span className="relative z-10">İndir</span>
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleProjectDetails(project.id);
+                    }}
+                    className="relative px-4 py-2.5 rounded-lg bg-[#162435] border border-[#1ae885]/30 text-[#1ae885] flex items-center justify-center hover:bg-[#1e3247] transition-all duration-300"
+                    aria-label="Detayları göster"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              
+              {/* Işık Efekti */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#1ae885]/5 to-transparent transform translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1500"></div>
+              </div>
+              
+              {/* Üst Köşe Dekoratif Çizgi */}
+              <div className="absolute top-0 right-0 w-20 h-1 bg-gradient-to-r from-transparent to-[#1ae885] rounded-bl-full"></div>
+              
+              {/* Alt Köşe Dekoratif Çizgi */}
+              <div className="absolute bottom-0 left-0 w-20 h-1 bg-gradient-to-r from-[#1ae885] to-transparent rounded-tr-full"></div>
             </div>
           ))}
         </div>
@@ -234,6 +223,17 @@ const Projects = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
+                
+                {/* Proje Görseli - Yeni Eklendi */}
+                <div className="w-full h-48 md:h-64 relative mb-6 rounded-lg overflow-hidden">
+                  <Image 
+                    src={projects.find(p => p.id === activeProject)?.image || ''}
+                    alt={projects.find(p => p.id === activeProject)?.title || ''}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c1520] to-transparent opacity-60"></div>
+                </div>
                 
                 {/* Proje Başlığı */}
                 <h2 className="text-3xl font-bold text-white mb-2 pr-8">
