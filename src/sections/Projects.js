@@ -178,12 +178,13 @@ const Projects = () => {
                     </div>
                     
                     {/* Butonlar */}
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 relative z-30">
                       <a
                         href={project.storeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative overflow-hidden rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium px-5 py-2.5 text-center inline-flex items-center justify-center transition-all shadow-md hover:shadow-[0_0_15px_rgba(26,232,133,0.4)] hover:scale-105 active:scale-95 duration-300"
+                        className="relative overflow-hidden rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium px-5 py-2.5 text-center inline-flex items-center justify-center transition-all shadow-md hover:shadow-[0_0_15px_rgba(26,232,133,0.4)] hover:scale-105 active:scale-95 duration-300 cursor-pointer pointer-events-auto"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <svg className="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19.5L14.8,4.2V10M13.5,2V10A1,1 0 0,0 14.5,11H22V20A2,2 0 0,1 20,22H13.5V2Z"/>
@@ -191,8 +192,9 @@ const Projects = () => {
                         <span>Play Store</span>
                       </a>
                       <button
+                        type="button"
                         onClick={(e) => toggleProjectDetails(project.id, e)}
-                        className="relative overflow-hidden rounded-lg bg-[#172636] text-white font-medium px-5 py-2.5 text-center inline-flex items-center justify-center transition-all border border-[#1ae885]/30 shadow-md hover:bg-[#1e3247] hover:scale-105 active:scale-95 duration-300"
+                        className="relative overflow-hidden rounded-lg bg-[#172636] text-white font-medium px-5 py-2.5 text-center inline-flex items-center justify-center transition-all border border-[#1ae885]/30 shadow-md hover:bg-[#1e3247] hover:scale-105 active:scale-95 duration-300 cursor-pointer pointer-events-auto"
                       >
                         <svg className="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -291,7 +293,8 @@ const Projects = () => {
                       href={projects.find(p => p.id === activeProject)?.storeUrl || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative overflow-hidden px-6 py-3.5 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium text-center shadow-md hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 active:scale-95"
+                      className="relative z-20 overflow-hidden px-6 py-3.5 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium text-center shadow-md hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 active:scale-95 cursor-pointer"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                         <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/>
@@ -320,7 +323,7 @@ const Projects = () => {
         <div className="flex justify-center mt-8 sm:mt-16">
           <Link 
             href="#projelerim"
-            className="group relative z-10 px-8 py-3 rounded-full overflow-hidden bg-transparent border border-[#1ae885]/30 text-white font-medium transition-all duration-500 hover:border-[#1ae885]/70"
+            className="group relative z-10 px-8 py-3 rounded-full overflow-hidden bg-transparent border border-[#1ae885]/30 text-white font-medium transition-all duration-500 hover:border-[#1ae885]/70 cursor-pointer"
           >
             <span className="relative z-10 group-hover:text-black transition-colors duration-500">Tüm Projeleri Gör</span>
             <div className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left bg-gradient-to-r from-[#1ae885] to-[#0ea5e9]"></div>
