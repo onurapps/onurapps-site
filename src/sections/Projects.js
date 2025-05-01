@@ -78,7 +78,7 @@ const Projects = () => {
           {projects.map((project) => (
             <div 
               key={project.id}
-              className="perspective-1000 relative h-[450px] group cursor-pointer"
+              className="perspective-1000 relative h-[500px] sm:h-[500px] md:h-[480px] lg:h-[450px] group cursor-pointer mb-10 sm:mb-8 md:mb-6 lg:mb-0"
             >
               {/* 3D Kart */}
               <div className="relative w-full h-full transform-style-3d rotate-y-0 group-hover:rotate-y-12 transition-transform duration-700">
@@ -90,7 +90,7 @@ const Projects = () => {
                   {/* Ana Kart */}
                   <div className="relative bg-gradient-to-bl from-[#162435] via-[#0c1520] to-[#0a0f18] shadow-[0_0_40px_rgba(26,232,133,0.15)] rounded-xl border border-[#1ae885]/10 p-0.5 h-full w-full overflow-hidden z-10">
                     {/* Görsel Bölümü */}
-                    <div className="relative h-[55%] overflow-hidden rounded-t-xl">
+                    <div className="relative h-[50%] md:h-[55%] overflow-hidden rounded-t-xl">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -104,7 +104,7 @@ const Projects = () => {
                     </div>
                     
                     {/* İçerik Bölümü */}
-                    <div className="p-6 h-[45%] flex flex-col justify-between relative">
+                    <div className="p-6 h-[50%] md:h-[45%] flex flex-col justify-between relative">
                       {/* Arka Plan Parıltılar */}
                       <div className="absolute w-20 h-20 rounded-full bg-[#1ae885]/5 -top-10 -right-10 blur-xl"></div>
                       <div className="absolute w-20 h-20 rounded-full bg-[#0ea5e9]/5 bottom-5 -left-10 blur-xl"></div>
@@ -125,7 +125,7 @@ const Projects = () => {
                         </div>
                       </div>
                       
-                      <div className="flex gap-3 mt-6">
+                      <div className="flex gap-3 mt-4 sm:mt-6">
                         <Link
                           href={project.demoUrl}
                           target="_blank"
@@ -160,7 +160,7 @@ const Projects = () => {
         </div>
 
         {/* Daha Fazla Proje Butonu */}
-        <div className="flex justify-center mt-16">
+        <div className="flex justify-center mt-8 sm:mt-16">
           <Link 
             href="#projelerim"
             className="group relative z-10 px-8 py-3 rounded-full overflow-hidden bg-transparent border border-[#1ae885]/30 text-white font-medium transition-all duration-500 hover:border-[#1ae885]/70"

@@ -94,7 +94,7 @@ const Hero = () => {
           </div>
           
           Merhaba!
-          <span className="block mt-1 h-[1.5em] min-h-[40px]">
+          <span className="block mt-1 h-[2.5em] sm:h-[1.5em] min-h-[60px] text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             {text}
             <span className="inline-block w-[2px] h-[1em] bg-white ml-1 animate-pulse"></span>
           </span>
