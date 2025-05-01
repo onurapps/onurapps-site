@@ -27,7 +27,7 @@ const projectsData = {
     primaryImage: '/projects/kronos.png',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.kronos',
     challenges: 'Kronos projesinde karşılaştığım en büyük zorluk, geniş tarihi veri setinin yönetilmesi ve bu verilerin zorluk seviyelerine göre ayarlanması oldu. Ayrıca kullanıcı deneyiminin sezgisel ve eğlenceli olmasını sağlamak için UI/UX tasarımına özel önem verdim.',
-    solutions: 'Veri yönetimi için Supabase kullanarak esnek ve ölçeklenebilir bir backend çözümü geliştirdim. GetX state management kütüphanesi ile performanslı ve reactive bir uygulama akışı sağladım. Kullanıcı feedback\'lerine dayalı iteratif iyileştirmeler yaparak oyun deneyimini sürekli geliştirdim.',
+    solutions: 'Veri yönetimi için Supabase kullanarak esnek ve ölçeklenebilir bir backend çözümü geliştirdim. GetX state management kütüphanesi ile performanslı ve reactive bir uygulama akışı sağladım. Kullanıcı feedback&apos;lerine dayalı iteratif iyileştirmeler yaparak oyun deneyimini sürekli geliştirdim.',
     releasedDate: 'Ocak 2023'
   },
   'nefesal': {
@@ -54,7 +54,7 @@ const projectsData = {
     primaryImage: '/projects/nefesal.png',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.nefesai',
     challenges: 'NefesAl projesinin en zorlu kısmı, kullanıcıların motivasyonunu sürekli yüksek tutacak bir sistem tasarlamaktı. Ayrıca sağlık verilerinin doğru hesaplanması ve sunulması için detaylı araştırma yapmam gerekti.',
-    solutions: 'Kullanıcı motivasyonunu artırmak için davranışsal psikoloji ilkelerinden yararlanarak ödül sistemleri ve görsel geri bildirimler tasarladım. Firebase ile gerçek zamanlı kullanıcı verileri takibi sağladım ve Provider pattern kullanarak uygulama state\'ini etkin bir şekilde yönettim.',
+    solutions: 'Kullanıcı motivasyonunu artırmak için davranışsal psikoloji ilkelerinden yararlanarak ödül sistemleri ve görsel geri bildirimler tasarladım. Firebase ile gerçek zamanlı kullanıcı verileri takibi sağladım ve Provider pattern kullanarak uygulama state&apos;ini etkin bir şekilde yönettim.',
     releasedDate: 'Mayıs 2023'
   }
 };
@@ -123,7 +123,7 @@ export default function ProjectDetails({ params }) {
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 mr-2">
                   <path d="M3.609 1.814L13.792 12 3.609 22.186c-.181.181-.29.433-.29.7 0 .267.109.519.29.7.181.181.433.29.7.29.267 0 .519-.109.7-.29L15.567 12 5.009 1.424c-.181-.181-.434-.29-.7-.29-.267 0-.519.109-.7.29-.181.181-.29.434-.29.7 0 .267.109.519.29.7z"/>
                 </svg>
-                Google Play'de Görüntüle
+                Google Play&apos;de Görüntüle
               </a>
             </div>
             
