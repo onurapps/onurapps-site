@@ -159,23 +159,25 @@ const Projects = () => {
                 
                 {/* Buttonlar */}
                 <div className="flex gap-3 mt-4">
-                  <Link
+                  <a
                     href={project.storeUrl}
                     target="_blank"
-                    className="relative overflow-hidden px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium flex-1 text-center hover:shadow-[0_0_15px_rgba(26,232,133,0.4)] transition-all duration-300 flex items-center justify-center"
+                    rel="noopener noreferrer"
+                    className="relative overflow-hidden px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium flex-1 text-center cursor-pointer shadow-md hover:shadow-[0_0_15px_rgba(26,232,133,0.4)] transition-all duration-300 flex items-center justify-center"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M5,20.5A3.5,3.5 0 0,1 1.5,17A3.5,3.5 0 0,1 5,13.5A3.5,3.5 0 0,1 8.5,17A3.5,3.5 0 0,1 5,20.5M5,12A5,5 0 0,0 0,17A5,5 0 0,0 5,22A5,5 0 0,0 10,17A5,5 0 0,0 5,12M14.8,10H19.5L14.8,4.2V10M13.5,2V10A1,1 0 0,0 14.5,11H22V20A2,2 0 0,1 20,22H13.5V2Z"/>
                     </svg>
                     <span className="relative z-10">İndir</span>
-                  </Link>
+                  </a>
                   <button
                     type="button"
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       toggleProjectDetails(project.id);
                     }}
-                    className="relative px-4 py-2.5 rounded-lg bg-[#162435] border border-[#1ae885]/30 text-[#1ae885] flex items-center justify-center hover:bg-[#1e3247] transition-all duration-300"
+                    className="relative px-4 py-2.5 rounded-lg bg-[#162435] border border-[#1ae885]/30 text-[#1ae885] flex items-center justify-center hover:bg-[#1e3247] transition-all duration-300 cursor-pointer shadow-md"
                     aria-label="Detayları göster"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -273,16 +275,17 @@ const Projects = () => {
                 
                 {/* İndirme Butonu */}
                 <div className="flex justify-center pt-2">
-                  <Link
+                  <a
                     href={projects.find(p => p.id === activeProject)?.storeUrl || '#'}
                     target="_blank"
-                    className="relative overflow-hidden px-6 py-3 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium text-center hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300 flex items-center gap-2"
+                    rel="noopener noreferrer"
+                    className="relative overflow-hidden px-6 py-3 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium text-center shadow-md hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300 flex items-center gap-2 cursor-pointer"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                       <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/>
                     </svg>
                     <span className="relative z-10">Google Play&apos;den İndir</span>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
