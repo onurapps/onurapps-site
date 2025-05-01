@@ -150,89 +150,181 @@ export default function ProjectDetails({ params }) {
         </div>
       </div>
       
-      {/* Project Details Section */}
+      {/* Project Details Section - Dialog Cards */}
       <div className="container mx-auto px-6 mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold mb-6 text-white">Proje Hakkında</h2>
-            
-            <div className="prose prose-lg prose-invert max-w-none mb-10">
-              {project.description.split('\n\n').map((paragraph, idx) => (
-                <p key={idx} className="text-gray-300 mb-4 leading-relaxed">{paragraph}</p>
-              ))}
+        {/* Diyalog Kartı: Proje Açıklaması */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="flex flex-col md:flex-row gap-4 items-start">
+            {/* Avatar */}
+            <div className="flex-shrink-0">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[#1ae885] to-[#0ea5e9] flex items-center justify-center shadow-lg text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
             </div>
             
-            <h3 className="text-2xl font-bold mb-4">Özellikler</h3>
-            <ul className="mb-10 space-y-2">
-              {project.features.map((feature, index) => (
-                <li key={index} className="flex items-start">
-                  <svg className="h-6 w-6 text-[#1ae885] mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">{feature}</span>
-                </li>
-              ))}
-            </ul>
-            
-            <h3 className="text-2xl font-bold mb-4">Karşılaşılan Zorluklar</h3>
-            <p className="text-gray-300 mb-8 leading-relaxed">{project.challenges}</p>
-            
-            <h3 className="text-2xl font-bold mb-4">Çözümler</h3>
-            <p className="text-gray-300 mb-8 leading-relaxed">{project.solutions}</p>
+            {/* Message */}
+            <div className="flex-grow bg-[#162435] rounded-2xl p-6 shadow-lg relative">
+              {/* Arrow */}
+              <div className="absolute top-4 left-0 transform -translate-x-1/2 rotate-45 w-4 h-4 bg-[#162435] hidden md:block"></div>
+              
+              <h3 className="text-xl font-bold text-white mb-3">Proje Hakkında</h3>
+              <div className="prose prose-invert max-w-none text-gray-300">
+                {project.description.split('\n\n').map((paragraph, idx) => (
+                  <p key={idx} className="mb-4 leading-relaxed">{paragraph}</p>
+                ))}
+              </div>
+              <div className="text-[#1ae885] text-xs mt-2">OnurApps</div>
+            </div>
           </div>
-          
-          <div>
-            <div className="bg-gradient-to-bl from-[#162435] via-[#0c1520] to-[#0a0f18] shadow-[0_0_30px_rgba(26,232,133,0.1)] rounded-xl border border-[#1ae885]/10 p-6">
-              <h3 className="text-xl font-bold mb-6 border-b border-gray-800 pb-4">Proje Detayları</h3>
+        </div>
+        
+        {/* Diyalog Kartı: Özellikler */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="flex flex-col md:flex-row gap-4 items-start">
+            {/* Message (sağ tarafta) */}
+            <div className="flex-grow bg-[#0c1520] rounded-2xl p-6 shadow-lg relative order-2 md:order-1">
+              {/* Arrow */}
+              <div className="absolute top-4 right-0 transform translate-x-1/2 rotate-45 w-4 h-4 bg-[#0c1520] hidden md:block"></div>
               
-              <div className="space-y-4">
+              <h3 className="text-xl font-bold text-white mb-3">Özellikler</h3>
+              <ul className="space-y-3">
+                {project.features.map((feature, index) => (
+                  <li key={index} className="flex items-start text-gray-300">
+                    <svg className="h-5 w-5 text-[#1ae885] mr-2 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="text-[#0ea5e9] text-xs mt-4">Kullanıcı</div>
+            </div>
+            
+            {/* Avatar (sağ tarafta) */}
+            <div className="flex-shrink-0 md:order-2 order-1 md:ml-auto">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[#0ea5e9] to-[#2563eb] flex items-center justify-center shadow-lg text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Diyalog Kartı: Zorluklar ve Çözümler */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="flex flex-col md:flex-row gap-4 items-start">
+            {/* Avatar */}
+            <div className="flex-shrink-0">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[#1ae885] to-[#0ea5e9] flex items-center justify-center shadow-lg text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+            </div>
+            
+            {/* Message */}
+            <div className="flex-grow bg-[#162435] rounded-2xl p-6 shadow-lg relative">
+              {/* Arrow */}
+              <div className="absolute top-4 left-0 transform -translate-x-1/2 rotate-45 w-4 h-4 bg-[#162435] hidden md:block"></div>
+              
+              <h3 className="text-xl font-bold text-white mb-3">Karşılaşılan Zorluklar</h3>
+              <p className="text-gray-300 leading-relaxed mb-6">{project.challenges}</p>
+              
+              <h3 className="text-xl font-bold text-white mb-3">Çözümler</h3>
+              <p className="text-gray-300 leading-relaxed">{project.solutions}</p>
+              
+              <div className="text-[#1ae885] text-xs mt-4">OnurApps</div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Proje Detayları ve İndir Kartı */}
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-4 items-start">
+            {/* Message (sağ tarafta) */}
+            <div className="flex-grow bg-[#0c1520] rounded-2xl p-6 shadow-lg relative order-2 md:order-1">
+              {/* Arrow */}
+              <div className="absolute top-4 right-0 transform translate-x-1/2 rotate-45 w-4 h-4 bg-[#0c1520] hidden md:block"></div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-gray-400 text-sm">Proje Adı</h4>
-                  <p className="font-medium">{project.title}</p>
+                  <h3 className="text-xl font-bold text-white mb-4 border-b border-gray-800 pb-2">Proje Detayları</h3>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-gray-400 text-sm">Proje Adı</h4>
+                      <p className="font-medium text-white">{project.title}</p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-gray-400 text-sm">Teknoloji Stack</h4>
+                      <p className="font-medium text-white">{project.techStack.join(', ')}</p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-gray-400 text-sm">Yayın Tarihi</h4>
+                      <p className="font-medium text-white">{project.releasedDate}</p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-gray-400 text-sm">Platform</h4>
+                      <p className="font-medium text-white">Android, iOS</p>
+                    </div>
+                  </div>
                 </div>
                 
-                <div>
-                  <h4 className="text-gray-400 text-sm">Teknoloji Stack</h4>
-                  <p className="font-medium">{project.techStack.join(', ')}</p>
-                </div>
-                
-                <div>
-                  <h4 className="text-gray-400 text-sm">Yayın Tarihi</h4>
-                  <p className="font-medium">{project.releasedDate}</p>
-                </div>
-                
-                <div>
-                  <h4 className="text-gray-400 text-sm">Platform</h4>
-                  <p className="font-medium">Android, iOS</p>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-4">İndirme Bağlantısı</h3>
+                    <p className="text-gray-400 mb-4 text-sm">Uygulamayı hemen indirip deneyimleyebilirsiniz:</p>
+                  </div>
+                  
+                  <a 
+                    href={project.playStoreUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex justify-center items-center w-full bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-bold py-3 px-4 rounded-lg hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 mr-2">
+                      <path d="M3.609 1.814L13.792 12 3.609 22.186c-.181.181-.29.433-.29.7 0 .267.109.519.29.7.181.181.433.29.7.29.267 0 .519-.109.7-.29L15.567 12 5.009 1.424c-.181-.181-.434-.29-.7-.29-.267 0-.519.109-.7.29-.181.181-.29.434-.29.7 0 .267.109.519.29.7z"/>
+                    </svg>
+                    Google Play&apos;de İndir
+                  </a>
                 </div>
               </div>
               
-              <div className="mt-8">
-                <a 
-                  href={project.playStoreUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex justify-center items-center w-full bg-[#1ae885]/10 hover:bg-[#1ae885]/20 text-[#1ae885] font-medium py-3 rounded-lg transition-all duration-300"
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 mr-2">
-                    <path d="M3.609 1.814L13.792 12 3.609 22.186c-.181.181-.29.433-.29.7 0 .267.109.519.29.7.181.181.433.29.7.29.267 0 .519-.109.7-.29L15.567 12 5.009 1.424c-.181-.181-.434-.29-.7-.29-.267 0-.519.109-.7.29-.181.181-.29.434-.29.7 0 .267.109.519.29.7z"/>
-                  </svg>
-                  Uygulamayı İndir
-                </a>
+              <div className="mt-6 pt-6 border-t border-gray-800">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">İletişime Geç</h3>
+                    <p className="text-gray-400 text-sm">Benzer bir proje için iletişime geçin</p>
+                  </div>
+                  
+                  <Link 
+                    href="/#contact" 
+                    className="inline-flex items-center bg-[#1ae885]/10 hover:bg-[#1ae885]/20 text-[#1ae885] font-medium py-2 px-4 rounded-lg transition-all duration-300"
+                  >
+                    İletişim Formu
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
               
-              <div className="mt-8 pt-6 border-t border-gray-800">
-                <h4 className="text-xl font-bold mb-4">İletişime Geç</h4>
-                <p className="text-gray-400 mb-4">Bu proje hakkında detaylı bilgi almak veya benzer bir proje geliştirmek için iletişime geçin.</p>
-                <Link 
-                  href="/#contact" 
-                  className="inline-flex items-center text-[#1ae885] hover:underline"
-                >
-                  İletişim Formu
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
+              <div className="text-[#0ea5e9] text-xs mt-4">Kullanıcı</div>
+            </div>
+            
+            {/* Avatar (sağ tarafta) */}
+            <div className="flex-shrink-0 md:order-2 order-1 md:ml-auto">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[#0ea5e9] to-[#2563eb] flex items-center justify-center shadow-lg text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
               </div>
             </div>
           </div>
