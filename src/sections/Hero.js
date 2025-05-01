@@ -9,58 +9,59 @@ import SpaceBackground from '../components/SpaceBackground';
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [text, setText] = useState('');
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [delta, setDelta] = useState(100);
   
   const texts = [
     'Seni görmek ne güzel şey..',
     'Keşfetmeye hazır mısın?'
   ];
   
-  const typingSpeed = 100; // ms
-  const pauseBetweenTexts = 1000; // ms
-  
-  // Daktilo efekti için
-  useEffect(() => {
-    let typingTimer;
-    let currentCharIndex = 0;
-    let currentText = texts[currentTextIndex];
-    
-    const typeNextChar = () => {
-      if (currentCharIndex < currentText.length) {
-        setText(currentText.substring(0, currentCharIndex + 1));
-        currentCharIndex++;
-        typingTimer = setTimeout(typeNextChar, typingSpeed);
-      } else {
-        // Yazma işlemi tamamlandı
-        if (currentTextIndex < texts.length - 1) {
-          // Bir sonraki metne geçmek için bekleme
-          setTimeout(() => {
-            setText('');
-            currentCharIndex = 0;
-            setCurrentTextIndex(prevIndex => prevIndex + 1);
-            typingTimer = setTimeout(typeNextChar, typingSpeed);
-          }, pauseBetweenTexts);
-        } else {
-          // Tüm metinler tamamlandı
-          setIsTypingComplete(true);
-        }
-      }
-    };
-    
-    // Yazma işlemini başlat
-    typingTimer = setTimeout(typeNextChar, typingSpeed);
-    
-    return () => {
-      clearTimeout(typingTimer);
-    };
-  }, [currentTextIndex, texts]);
-
   // Fade-in animasyonu için
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
+  
+  // Daktilo efekti
+  useEffect(() => {
+    let timer;
+    
+    const tick = () => {
+      const currentText = texts[currentIndex];
+      
+      // Mevcut duruma göre metni güncelle
+      if (isDeleting) {
+        // Metni sil
+        setText(prev => prev.slice(0, -1));
+      } else {
+        // Metni yaz
+        setText(prev => currentText.slice(0, prev.length + 1));
+      }
+      
+      // Yazma/silme hızını ayarla
+      if (!isDeleting && text === currentText) {
+        // Metin tamamen yazıldı, silmeye başlamadan önce bekle
+        setDelta(2000); // 2 saniye bekle
+        setIsDeleting(true);
+      } else if (isDeleting && text === '') {
+        // Silme işlemi bitti, sonraki metne geç
+        setIsDeleting(false);
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+        setDelta(500); // Yeni metne geçmeden önce kısa bekle
+      } else {
+        // Normal yazma/silme hızı
+        setDelta(isDeleting ? 50 : 100);
+      }
+    };
+    
+    timer = setTimeout(tick, delta);
+    
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [text, isDeleting, currentIndex, delta, texts]);
+  
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center py-16 overflow-hidden bg-[#080c14]">
       {/* Uzay temalı arka plan */}
