@@ -430,7 +430,7 @@ const Projects = () => {
                     
                     {/* İkon ve metin */}
                     <span className="relative flex items-center gap-3 text-[#080c14] font-medium group-hover:scale-105 transition-transform duration-300">
-                      <span className="text-base">Google Play'den İndir</span>
+                      <span className="text-base">Google Play&apos;den İndir</span>
                     </span>
                   </a>
                 </div>
