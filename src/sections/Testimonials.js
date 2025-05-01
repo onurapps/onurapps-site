@@ -29,13 +29,13 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Ayşe Yılmaz",
-      role: "CEO, Tech Ventures",
+      role: "CEO",
       text: "Onur ile çalışmak muhteşemdi. Projeyi zamanında teslim etti ve tamamen beklentilerimizi karşıladı.",
       rating: 5,
     },
     {
       name: "Mehmet Kaya",
-      role: "Kurucu, Dijital Medya",
+      role: "Kurucu",
       text: "Web sitemize yaptığı güncellemeler sayesinde dönüşüm oranımız %40 arttı.",
       rating: 5,
     },
