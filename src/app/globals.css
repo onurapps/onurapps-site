@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Animasyon gecikmeleri */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: var(--font-inter);
+    --font-playfair: var(--font-playfair);
+  }
+}
+
+/* Font uygulamaları */
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+/* Animasyon gecikmeleri */
+.animation-delay-2s {
+  animation-delay: 2s;
+}
+
+.animation-delay-4s {
+  animation-delay: 4s;
+}
+
+/* Animasyon Gecikmesi Sınıfları */
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+.animation-delay-700 {
+  animation-delay: 0.7s;
+}
+
+/* 3D kart efektleri için CSS */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-0 {
+  transform: rotateY(0deg);
+}
+
+.rotate-y-12 {
+  transform: rotateY(12deg);
+}
+
+/* Scrollbar'ı gizlemek için stil */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animasyon sınıfları */
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-1 {
+  opacity: 0;
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-fade-in-2 {
+  opacity: 0;
+  animation: fade-in 0.6s ease-out 0.2s forwards;
+}
+
+.animate-fade-in-3 {
+  opacity: 0;
+  animation: fade-in 0.6s ease-out 0.4s forwards;
+}

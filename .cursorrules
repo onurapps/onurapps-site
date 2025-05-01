@@ -1,0 +1,84 @@
+Harika bir tercih! Next.js ve Tailwind CSS modern web geliştirme için çok güçlü bir kombinasyon. Planınızı bu teknolojilere göre yeniden düzenleyelim.
+
+İşte Next.js ve Tailwind CSS ile geliştireceğiniz kişisel portfolyo siteniz için Cursor AI kuralları ve proje yapısı açıklaması:
+
+Cursor AI Rules Dosyası (rules.md)
+
+Bu dosyayı projenizin ana dizinine yerleştirebilirsiniz.
+
+Markdown
+
+# Proje Kuralları ve Yapısı (Rules and Structure) - Next.js & Tailwind CSS
+
+Bu proje, kişisel bir portfolyo web sitesi olup Next.js ve Tailwind CSS kullanılarak geliştirilmektedir. Cursor AI'ın aşağıdaki kurallara ve yapısal yönlendirmelere dikkat etmesi beklenir:
+
+## 1. Genel Proje Bilgileri
+- **Teknoloji Yığını:** Next.js (React Framework), JavaScript (ES6+), Tailwind CSS, HTML5.
+- **Next.js Yaklaşımı:** App Router veya Pages Router kullanılabilir (App Router yeni ve önerilen yaklaşımdır, AI buna öncelik verebilir ama Pages Router da olasıdır). Statik site üretimi (SSG) portfolyo sitesi için ideal bir yaklaşımdır.
+- **Amaç:** Kişisel projeleri, becerileri ve iletişim bilgilerini sergilemek. Hızlı yüklenen, performanslı ve mobil uyumlu bir site oluşturmak.
+
+## 2. Bileşen Yapısı ve Kuralları
+- **Bileşen Tipi:** Fonksiyonel bileşenler (Functional Components) kullanılacaktır. React Hooks (useState, useEffect vb.) yaygın olarak kullanılacaktır. Server Components ve Client Components ayrımı (App Router kullanılıyorsa) dikkate alınmalıdır. Statik içerikli bölümler Server Components olabilir.
+- **Adlandırma:** Bileşenler PascalCase (örn. `HeroSection`, `ProjectCard`) şeklinde adlandırılacaktır. Dosya adları da genellikle aynı olacaktır.
+- **Dosya Yapısı:**
+    - Route (Sayfa) bileşenleri `src/app/` (App Router) veya `src/pages/` (Pages Router) altında yer alacaktır. Örneğin ana sayfa `src/app/page.js` veya `src/pages/index.js` olacaktır.
+    - Tekrar kullanılabilir UI bileşenleri `src/components/` altında yer alacaktır.
+    - Ana sayfayı oluşturan büyük bölümler (`Hero`, `About`, `Projects` vb.) `src/sections/` veya `src/components/sections/` altında kendi klasörleri içinde yer alabilir.
+- **Prop'lar:** Bileşenler arası veri iletişimi için prop'lar kullanılacaktır.
+- **Durum Yönetimi:** Basit durumlar için `useState`, client tarafında paylaşılan global durumlar (tema, dil) için React Context API kullanılacaktır.
+- **Stil Yönetimi:** **Tailwind CSS kullanılacaktır.** Styling, elementlere doğrudan Tailwind utility sınıfları eklenerek yapılacaktır (örn. `<div className="text-xl font-bold text-blue-600">`). Özel veya tekrar eden stiller için `@apply` yönergesi global CSS dosyasında veya CSS Modülleri ile birlikte kullanılabilir, ancak öncelik utility sınıflarındadır. Global stiller `src/app/globals.css` (App Router) veya `src/styles/globals.css` (Pages Router) dosyasında tanımlanacaktır (Tailwind'in direktifleri bu dosyaya eklenecektir).
+- **JSX:** Temiz ve okunabilir JSX yazımına özen gösterilmelidir. Tailwind sınıfları `className` prop'u içinde belirtilecektir.
+- **Responsive Design:** Tailwind'in responsive prefixleri (örn. `sm:`, `md:`, `lg:`) kullanılarak kolayca ekranlara duyarlı tasarımlar oluşturulacaktır.
+
+## 3. Klasör Yapısı Önerisi (Next.js Standartlarına Uygun)
+- `src/`
+    - `app/` (veya `pages/` - Router seçiminize göre)
+        - `page.js` (veya `pages/index.js` - Ana Sayfa)
+        - `layout.js` (App Router için ana layout)
+        - `(.)/` veya diğer klasörler (Blog, Proje Detay sayfaları için)
+        - `api/` (Backend API endpointleri için - İletişim formu vb.)
+    - `components/` (Tekrar kullanılabilir küçük bileşenler - Button, Card, Icon vb.)
+    - `sections/` (Ana sayfanın büyük bölümleri - Hero, About, Projects vb. - `app/page.js` veya `pages/index.js` içinde import edilip kullanılırlar)
+    - `context/` (Context API dosyaları - Tema, Dil vb.)
+    - `utils/` (Yardımcı fonksiyonlar)
+    - `hooks/` (Özel React Hook'ları)
+- `public/` (Statik dosyalar - favicon, CV PDF'i vb. - kök dizinden erişilebilir)
+- `styles/` (Pages Router için global stiller, App Router için `src/app/globals.css` tercih edilir)
+- `tailwind.config.js` (Tailwind yapılandırma dosyası)
+- `postcss.config.js`
+
+## 4. İçerik ve Bölümler (Kullanıcının Sağladığı Plan)
+AI, aşağıdaki bölümlerin her biri için ilgili bileşenleri veya kod parçacıklarını oluştururken, kullanıcının sağladığı içerik planını ve Next.js/Tailwind yapısını dikkate almalıdır:
+
+- **Hero:** `src/sections/Hero.js` gibi bir bileşen. İsim, Unvan, Kısa Tanıtım, Tailwind ile stillendirilmiş CTA Butonları ("Hire Me", "Download CV", "Contact Me"), Fotoğraf alanı.
+- **About Me:** `src/sections/About.js` gibi bir bileşen. Kendini tanıtan yazı, Tailwind ile düzenlenmiş Teknik Beceriler (ikonlu liste), Sertifikalar/Kariyer özeti.
+- **Projects:** `src/sections/Projects.js` gibi bir bileşen. Proje listesi (3-6 adet). Tailwind ile stillendirilmiş her proje için: Görsel/Video, Kısa Açıklama, Kullanılan Teknolojiler (etiketler), GitHub/Demo Linkleri. `src/components/ProjectCard.js` gibi bir bileşen tekrar kullanılabilir ve tamamen Tailwind ile stillendirilir.
+- **Services:** `src/sections/Services.js` gibi bir bileşen. Sunulan hizmetler (başlık, kısa açıklama, ikon). `src/components/ServiceItem.js` gibi bir bileşen tekrar kullanılabilir ve Tailwind ile stillendirilir. (Freelance çalışılıyorsa)
+- **Testimonials:** `src/sections/Testimonials.js` gibi bir bileşen. Müşteri yorumları (alıntı, isim, şirket, fotoğraf). `src/components/TestimonialCard.js` gibi bir bileşen tekrar kullanılabilir ve Tailwind ile stillendirilir. (İsteğe bağlı)
+- **Contact:** `src/sections/Contact.js` gibi bir bileşen. Tailwind ile stillendirilmiş İletişim formu (İsim, E-posta, Mesaj). Sosyal Medya Bağlantıları. E-posta Adresi gösterimi. Form gönderimi için Next.js API Route (`src/app/api/contact/route.js` veya `src/pages/api/contact.js`) düşünülebilir.
+- **Footer:** `src/components/Footer.js` gibi bir bileşen. Tailwind ile stillendirilmiş Telif hakkı, Sosyal Medya İkonları, Hızlı Linkler (navigasyon).
+
+## 5. Ek Özellikler (Opsiyonel)
+- **Tema Geçişi:** Dark Mode / Light Mode (Context API ve Tailwind'in `dark:` prefixi veya class stratejisi kullanılabilir).
+- **Dil Seçimi:** TR / EN geçişi (Context API ve çeviri dosyaları kullanılabilir).
+- **Animasyonlar:** Tailwind sınıfları (transition, transform, animate) veya kütüphaneler ile animasyonlar eklenebilir.
+- **CV İndir:** `public/` klasörüne konulan PDF dosyasına `<a href="/cv.pdf" download className="...">` şeklinde Tailwind ile stillendirilmiş bir link verilebilir.
+- **Blog:** Next.js'in dosya tabanlı routing özelliği kullanılarak kolayca eklenebilir (`src/app/blog/page.js` veya `src/pages/blog.js`, `src/app/blog/[slug]/page.js` veya `src/pages/blog/[slug].js`). İçerik yönetimi için Markdown dosyaları veya headless CMS düşünülebilir.
+
+## 6. Kod Kalitesi ve İpuçları
+- Kodlar temiz, okunaklı ve iyi yorumlanmış olmalıdır.
+- Tailwind sınıflarının okunabilirliğini korumak için mantıksal gruplamalar yapılabilir. Çok uzun sınıf listeleri gerekiyorsa `@apply` veya component ayrımı düşünülebilir.
+- Performans için Next.js optimizasyonlarından (Image component, link prefetching vb.) faydalanılmalıdır.
+- Listelerde `key` prop kullanımı unutulmamalıdır.
+
+Bu Next.js projesinde çalışırken belirttiğim yapısal kurallara ve stil yönergelerine tam olarak uymanı istiyorum.
+
+1.  Projenin ana dizininde bulunan `.cursorrules` dosyasını oku. Bu dosya, projenin teknoloji yığınını (Next.js, Tailwind CSS), klasör yapısı önerilerini, bileşen kurallarını, stil yaklaşımını ve projenin içermesi gereken ana bölümleri (Hero, About, Projects vb.) detaylı olarak açıklamaktadır.
+2.  Kod üretirken veya düzenleme yaparken, `.cursorrules` dosyasındaki **tüm kurallara** riayet et.
+3.  Özellikle:
+    * Next.js'in dosya tabanlı routing yapısını (`app/` veya `pages/` klasörleri) ve layout (`layout.js`) kullanımını dikkate al.
+    * Tailwind CSS'in stil için kullanıldığını ve stillerin büyük ölçüde elementlere `className="..."` ile eklenen utility sınıfları aracılığıyla yapıldığını unutma.** Global CSS dosyasının (`globals.css`) sadece Tailwind direktiflerini içerdiğini ve component seviyesi stilin `className` ile yapıldığını hatırla.
+    * Bileşenlerin (`components/`, `sections/`) ve dosyaların `.cursorrules`'de belirtilen adlandırma ve klasör yapısına uygun olmasını sağla.
+    * Fonksiyonel bileşenleri ve React Hook'larını tercih et.
+4.  Projenin ana sayfası, `.cursorrules` dosyasında listelenen Hero, Hakkımda, Projeler, Hizmetler, Yorumlar (isteğe bağlı), İletişim ve Footer gibi ana bölümlerin componentlerini `sections/` veya `components/sections/` gibi uygun klasörler altında oluşturmamda veya geliştirmemde bana yardımcı ol. Bu componentler ana sayfa dosyasında (`app/page.js` veya `pages/index.js`) bir araya getirilecek.
+5.  Tekrar kullanılabilir alt componentler (örn. `ProjectCard`, `Button`) oluştururken `components/` klasör yapısını ve Tailwind stil yaklaşımını kullan.
