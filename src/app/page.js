@@ -1,10 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Hero from "../sections/Hero";
-import About from "../sections/About";
-import Projects from "../sections/Projects";
-import Testimonials from "@/sections/Testimonials";
-import Contact from '@/sections/Contact';
+import Hero from '../sections/Hero';
+import About from '../sections/About';
+import Projects from '../sections/Projects';
+import Testimonials from '../sections/Testimonials';
+import Contact from '../sections/Contact';
+import Footer from '../components/Footer';
 import Script from 'next/script';
 
 // JSON-LD yapılandırılmış veri
@@ -36,20 +35,12 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main className="flex-grow">
-        <Hero />
-        <About />
-        <Projects />
-        <Testimonials />
-        <Contact />
-        {/* Diğer bölümler buraya eklenecek 
-          - Services Section
-          - Testimonials Section
-          - Contact Section
-        */}
-      </main>
+    <main className="overflow-hidden">
+      <Hero />
+      <About />
+      <Projects />
+      <Testimonials />
+      <Contact />
       <Footer />
       
       {/* JSON-LD yapılandırılmış veri */}
@@ -58,6 +49,6 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </>
+    </main>
   );
 }
