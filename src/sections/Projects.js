@@ -77,7 +77,7 @@ const Projects = () => {
       ],
       tags: ['Flutter', 'Dart', 'Supabase', 'GetX'],
       image: '/projects/kronos.png',
-      storeUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.kronos',
+      storeUrl: 'https://play.google.com/store/apps/details?id=com.onurapps.kronos',
       detailUrl: '/projects/kronos'
     },
     {
@@ -94,7 +94,7 @@ const Projects = () => {
       ],
       tags: ['Flutter', 'Dart', 'Firebase', 'Provider'],
       image: '/projects/nefesal.png',
-      storeUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.nefesai',
+      storeUrl: 'https://play.google.com/store/apps/details?id=com.onurapps.nefesai',
       detailUrl: '/projects/nefesal'
     }
   ];
