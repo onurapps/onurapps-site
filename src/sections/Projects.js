@@ -125,7 +125,7 @@ const Projects = () => {
           {projects.map((project) => (
             <div 
               key={project.id}
-              className="perspective-1000 relative h-[500px] sm:h-[500px] md:h-[480px] lg:h-[450px] group cursor-pointer mb-10 sm:mb-8 md:mb-6 lg:mb-0"
+              className="perspective-1000 relative h-[500px] sm:h-[500px] md:h-[480px] lg:h-[450px] group mb-10 sm:mb-8 md:mb-6 lg:mb-0"
             >
               {/* 3D Kart */}
               <div className="relative w-full h-full transform-style-3d rotate-y-0 group-hover:rotate-y-12 transition-transform duration-700">
@@ -182,7 +182,11 @@ const Projects = () => {
                           <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                         </Link>
                         <button
-                          onClick={() => toggleProjectDetails(project.id)}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleProjectDetails(project.id);
+                          }}
                           className="relative px-4 py-2 rounded-lg border border-[#1ae885]/30 text-[#1ae885] flex items-center justify-center group-hover:border-[#1ae885]/60 transition-all duration-300 hover:bg-[#1ae885]/10"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
