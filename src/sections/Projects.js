@@ -38,7 +38,7 @@ const Projects = () => {
       description: 'Tarihi olayları kronolojik sıraya koyma mobil oyunu.',
       tags: ['Flutter', 'Dart', 'Supabase', 'GetX'],
       image: '/projects/kronos.png',
-      demoUrl: 'https://kronos-demo.vercel.app',
+      demoUrl: 'https://play.google.com/store/apps/details?id=com.onurdevs.kronos',
       detailUrl: '/projects/kronos'
     },
     {
@@ -131,16 +131,19 @@ const Projects = () => {
                           target="_blank"
                           className="relative overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-[#1ae885] to-[#0ea5e9] text-[#080c14] font-medium flex-1 text-center group-hover:shadow-[0_0_20px_rgba(26,232,133,0.4)] transition-all duration-300"
                         >
-                          <span className="relative z-10">Demo</span>
+                          <span className="relative z-10 flex items-center justify-center">
+                            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M3.609 1.814L13.792 12 3.609 22.186c-.181.181-.29.433-.29.7 0 .267.109.519.29.7.181.181.433.29.7.29.267 0 .519-.109.7-.29L15.567 12 5.009 1.424c-.181-.181-.434-.29-.7-.29-.267 0-.519.109-.7.29-.181.181-.29.434-.29.7 0 .267.109.519.29.7z"/>
+                            </svg>
+                            Görüntüle
+                          </span>
                           <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                         </Link>
                         <Link
                           href={project.detailUrl}
                           className="relative px-4 py-2 rounded-lg border border-[#1ae885]/30 text-[#1ae885] flex items-center justify-center group-hover:border-[#1ae885]/60 transition-all duration-300"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
+                          <span className="relative z-10">Detaylar</span>
                         </Link>
                       </div>
                     </div>
